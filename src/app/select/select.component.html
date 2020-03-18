@@ -1,0 +1,38 @@
+<div class="dropdown">
+
+    <button class="select-trigger" (click)="open(dropdown, origin)" #origin>
+
+        <ng-template [ngIf]="!isOpen" [ngIfElse]="searchTpl">
+            {{ label }}
+        </ng-template>
+
+        <ng-template #searchTpl>
+            <input [formControl]="searchControl" placeholder="Search.." autofocus (click)="$event.stopPropagation()">
+        </ng-template>
+
+    </button>
+
+    <ng-template #dropdown>
+
+        <div class="select-menu">
+
+            <!-- <cdk-virtual-scroll-viewport itemSize="100" class="select-menu-inner"
+                [style.height]="visibleOptions * 32 + 'px'">
+
+                <ng-content></ng-content>
+            </cdk-virtual-scroll-viewport> -->
+
+            <cdk-virtual-scroll-viewport [itemSize]="32" class="example-viewport"
+                [style.height]="visibleOptions * 32 + 'px'">
+                <div>
+                    <ng-content></ng-content>
+                </div>
+
+            </cdk-virtual-scroll-viewport>
+
+        </div>
+
+    </ng-template>
+
+
+</div>

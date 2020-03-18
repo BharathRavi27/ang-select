@@ -6,5 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng-select';
+  items = Array.from({ length: 10000 }).map((_, i) => ({
+    id: i,
+    label: `Item #${i}`,
+    data: 'lorem ipsum lorem'
+  }));
+  selectedVal: Event;
+
+  change($event: any) {
+    debugger
+    this.selectedVal = $event
+  }
+
+
+  selected(e) {
+
+    console.log(e)
+  }
 }
