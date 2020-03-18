@@ -13,6 +13,8 @@ export class AppComponent {
   }));
   selectedVal: Event;
 
+  message: string;
+
   change($event: any) {
     debugger
     this.selectedVal = $event

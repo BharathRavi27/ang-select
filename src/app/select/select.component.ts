@@ -36,6 +36,20 @@ export class SelectComponent implements OnInit, OnDestroy {
   @Output() selectChange = new EventEmitter();
   @Output() closed = new EventEmitter();
 
+
+
+  @Output()
+  messageChange = new EventEmitter<string>();
+
+  @Input()
+  get message() {
+    return this.selected;
+  }
+  set message(val) {
+    this.selected = val;
+    this.messageChange.emit(this.selected);
+  }
+
   visibleOptions = 6;
   searchControl = new FormControl();
 
@@ -54,6 +68,8 @@ export class SelectComponent implements OnInit, OnDestroy {
       childComponent.selected.subscribe((item) => {
         this.childComponents.forEach((compl: CustomOptionComponent) => {
           debugger
+          this.selected = item;
+          this.messageChange.emit(this.selected);
           this.selectChange.emit(item);
           compl.active = false;
         })

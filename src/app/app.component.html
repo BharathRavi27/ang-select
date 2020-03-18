@@ -1,9 +1,11 @@
 <div class="container">
     <h3>Selected : </h3>
     <p>{{selectedVal}}</p>
+    <h3>ngModel : </h3>
+    <p>{{message}}</p>
     <div style="margin-top: 200px;">
-        <app-select [options]="items" (selectChange)="change($event)">
-            <app-custom-option (selected)="change($event)" [value]="'Xcent'">
+        <app-select [(message)]="message" [options]="items" (selectChange)="change($event)">
+            <app-custom-option [value]="'Xcent'">
                 <div class="option">
                     <h1>Car Models</h1>
                     <h2>Hyndai</h2>
