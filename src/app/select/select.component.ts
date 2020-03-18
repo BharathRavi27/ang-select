@@ -54,6 +54,7 @@ export class SelectComponent implements OnInit, OnDestroy {
       childComponent.selected.subscribe((item) => {
         this.childComponents.forEach((compl: CustomOptionComponent) => {
           debugger
+          this.selectChange.emit(item);
           compl.active = false;
         })
         this.updateParentValue(item);
